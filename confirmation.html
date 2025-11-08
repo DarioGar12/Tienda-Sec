@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación - Mi Tienda Online</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Mi Tienda Online</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="cart.html">Carrito</a>
+            <div id="user-info">
+                <a href="login.html" id="login-link">Iniciar Sesión</a>
+                <a href="register.html" id="register-link">Registrarse</a>
+                <span id="welcome-message" style="display:none"></span>
+                <button id="logout-btn" style="display:none">Cerrar Sesión</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="confirmation-container">
+        <div class="confirmation-card">
+            <div class="confirmation-icon">✓</div>
+            <h2>¡Pedido Confirmado!</h2>
+            
+            <div class="payment-security">
+                <span class="security-badge">✔ Pago Seguro</span>
+                Tus datos de pago están completamente protegidos
+            </div>
+
+            <p>Gracias por tu compra. Hemos enviado un correo de confirmación a tu dirección de email.</p>
+            <p>Número de pedido: <strong id="order-number">#000001</strong></p>
+            <p>Fecha estimada de entrega: <strong id="delivery-date">10 días hábiles</strong></p>
+            
+            <div id="order-summary">
+                <!-- Resumen del pedido se cargará aquí -->
+            </div>
+            
+            <a href="index.html" class="back-to-shop">Volver a la Tienda</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mi Tienda Online. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

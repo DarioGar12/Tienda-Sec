@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Mi Tienda Online</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Mi Tienda Online</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="cart.html">Carrito</a>
+            <div id="user-info">
+                <a href="login.html" id="login-link">Iniciar Sesión</a>
+                <a href="register.html" id="register-link">Registrarse</a>
+                <span id="welcome-message" style="display:none"></span>
+                <button id="logout-btn" style="display:none">Cerrar Sesión</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="auth-container">
+        <div class="auth-form">
+            <h2>Iniciar Sesión</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group secure-field">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" required>
+                    <button type="button" class="password-toggle" onclick="togglePassword('password')">👁️</button>
+                    <span class="security-badge">✔ Seguro</span>
+                </div>
+
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+            <p>¿No tienes una cuenta? <a href="register.html">Regístrate aquí</a></p>
+            <div id="login-message" class="message" style="display:none"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mi Tienda Online. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function togglePassword(id) {
+            const input = document.getElementById(id);
+            input.type = input.type === 'password' ? 'text' : 'password';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Mi Tienda Online</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Mi Tienda Online</h1>
+        <nav>
+            <a href="index.html">Inicio</a>
+            <a href="cart.html">Carrito</a>
+            <div id="user-info">
+                <a href="login.html" id="login-link">Iniciar Sesión</a>
+                <a href="register.html" id="register-link">Registrarse</a>
+                <span id="welcome-message" style="display:none"></span>
+                <button id="logout-btn" style="display:none">Cerrar Sesión</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="auth-container">
+        <div class="auth-form">
+            <h2>Registro de Usuario</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="name">Nombre Completo:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group secure-field">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" name="password" minlength="6" required>
+                    <button type="button" class="password-toggle" onclick="togglePassword('password')">👁️</button>
+                    <div class="password-strength" id="password-strength"></div>
+                </div>
+
+                <div class="security-indicators">
+                    <div class="security-item" id="length-indicator">✔ Al menos 6 caracteres</div>
+                    <div class="security-item" id="number-indicator">✔ Contiene número</div>
+                    <div class="security-item" id="uppercase-indicator">✔ Contiene mayúscula</div>
+                </div>
+
+                <div class="form-group secure-field">
+                    <label for="confirm-password">Confirmar Contraseña:</label>
+                    <input type="password" id="confirm-password" name="confirm-password" required>
+                    <button type="button" class="password-toggle" onclick="togglePassword('confirm-password')">👁️</button>
+                </div>
+
+                <button type="submit">Registrarse</button>
+            </form>
+            <p>¿Ya tienes una cuenta? <a href="login.html">Inicia sesión aquí</a></p>
+            <div id="register-message" class="message" style="display:none"></div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Mi Tienda Online. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function togglePassword(id) {
+            const input = document.getElementById(id);
+            input.type = input.type === 'password' ? 'text' : 'password';
+        }
+
+        const passwordInput = document.getElementById('password');
+        const strengthBar = document.getElementById('password-strength');
+        const lengthIndicator = document.getElementById('length-indicator');
+        const numberIndicator = document.getElementById('number-indicator');
+        const uppercaseIndicator = document.getElementById('uppercase-indicator');
+
+        passwordInput.addEventListener('input', () => {
+            const val = passwordInput.value;
+            let strength = 0;
+
+            if(val.length >= 6) {
+                strength++;
+                lengthIndicator.style.color = '#27ae60';
+            } else {
+                lengthIndicator.style.color = '#e74c3c';
+            }
+
+            if(/\d/.test(val)) {
+                strength++;
+                numberIndicator.style.color = '#27ae60';
+            } else {
+                numberIndicator.style.color = '#e74c3c';
+            }
+
+            if(/[A-Z]/.test(val)) {
+                strength++;
+                uppercaseIndicator.style.color = '#27ae60';
+            } else {
+                uppercaseIndicator.style.color = '#e74c3c';
+            }
+
+            if(strength === 0) {
+                strengthBar.className = 'password-strength';
+            } else if(strength === 1) {
+                strengthBar.className = 'password-strength strength-weak';
+            } else if(strength === 2) {
+                strengthBar.className = 'password-strength strength-medium';
+            } else {
+                strengthBar.className = 'password-strength strength-strong';
+            }
+        });
+    </script>
+</body>
+</html>
